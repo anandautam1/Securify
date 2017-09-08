@@ -16,6 +16,7 @@ if(!empty($_GET["email"]) && empty($_GET["password"]))
 		}
 	
 		$email = $_GET["email"];
+		echo $email; 
 		// check if username exist first 
     	$query = sprintf("SELECT `pass_salt` FROM `users`  WHERE email='%s'",
               mysql_real_escape_string($email));
@@ -87,6 +88,7 @@ else if(!empty($_GET["email"]) && !empty($_GET["password"]))
     	else
     	{
 			$json_psalt['success'] = 1;
+			
 			echo json_encode($json_psalt);
 		}
 		mysqli_close($con);		

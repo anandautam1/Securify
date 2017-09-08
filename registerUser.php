@@ -1,12 +1,9 @@
 <?php
+
+include 'DatabaseConfig.php'; 
+
 if(!empty($_GET["email"]) && !empty($_GET["firstName"]) && !empty($_GET["lastName"]) && !empty($_GET["role"]) && !empty($_GET["phoneNumber"]) && !empty($_GET["password"]))
 	{
-		$con = mysqli_connect("127.0.0.1","root","root","securify");
-
-    	if (mysqli_connect_errno($con)) {
-     		die("Failed to connect to MySQL: " . mysqli_connect_error());
-    	}
-   
 		$email = $_GET["email"];
 		
 		$firstName = $_GET["firstName"];
