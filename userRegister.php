@@ -1,22 +1,27 @@
 <?php
-if(!empty($_GET["email"]) && !empty($_GET["password"]))
-	{
-		$con = mysqli_connect("127.0.0.1","securify_admin","Bj37au9595","securify");
 
-    	if (mysqli_connect_errno($con)) {
-     		die("Failed to connect to MySQL: " . mysqli_connect_error());
-    	}
-   
+include 'DatabaseConfig.php'; 
+
+if(!empty($_GET["email"]) && !empty($_GET["firstName"]) && !empty($_GET["lastName"]) && !empty($_GET["role"]) && !empty($_GET["phoneNumber"]) && !empty($_GET["password"]))
+	{
 		$email = $_GET["email"];
+		
+		$firstName = $_GET["firstName"];
+		
+		$lastName = $_GET["lastName"];
+		
+		$role = $_GET["role"];
+		
+		$phoneNumber = $_GET["phoneNumber"];
 		
 		$password = $_GET["password"];
 		
 		$psalt = random_password(7);
 		$password = sha1($password.$psalt);
-		
-	   // use with prepare statement after this 
-	   $query = "UPDATE users SET pass_hashed = '$password', pass_salt = '$psalt' WHERE email = '$email'";
-	   //echo $query;	   
+
+	   $query = "insert into users (userID, fname, lname, email, phone, pass_hashed, pass_salt, Role) values (NULL, '$firstName' , '$lastName', '$email', '$phoneNumber', '$password', '$psalt', '$role')";
+	   //echo $query;
+
 	   $inserted = mysqli_query($con, $query);
 
 	   if($inserted == 1){

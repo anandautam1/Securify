@@ -5,17 +5,14 @@
  $pfinal = sha1("Bj37au95951234567");
  //$password . $hash);
  //echo $pfinal; 
+include 'DatabaseConfig.php'; 
 
 // Login method 
 if(!empty($_GET["email"]) && empty($_GET["password"]))
 	{
-		$con = mysqli_connect("127.0.0.1","root","root","securify");
-
-		if (mysqli_connect_errno($con)) {
-	 		die("Failed to connect to MySQL: " . mysqli_connect_error());
-		}
 	
 		$email = $_GET["email"];
+		//echo $email; 
 		// check if username exist first 
     	$query = sprintf("SELECT `pass_salt` FROM `users`  WHERE email='%s'",
               mysql_real_escape_string($email));
@@ -87,6 +84,7 @@ else if(!empty($_GET["email"]) && !empty($_GET["password"]))
     	else
     	{
 			$json_psalt['success'] = 1;
+			
 			echo json_encode($json_psalt);
 		}
 		mysqli_close($con);		
