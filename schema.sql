@@ -11,7 +11,6 @@ CREATE TABLE Users
     fname VARCHAR(50) NOT NULL,
     lname VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    address VARCHAR(255) NOT NULL,
     phone VARCHAR(50) NOT NULL,
     pass_hashed VARCHAR(255) NOT NULL,
     pass_salt VARCHAR(255) NOT NULL,
@@ -31,7 +30,7 @@ CREATE TABLE RegisterCar
     description TEXT,
     PRIMARY KEY (carID),
     FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE, 
-    UNIQUE KEY email (keyID,registerID)
+    UNIQUE KEY email (keyID,registerationID)
 );
 
 CREATE TABLE Data
