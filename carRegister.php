@@ -1,5 +1,7 @@
 <?php
 
+
+
 // maybe get user id first then they can assign a new value of the car 
 if(!empty($_GET["userID"]) && !empty($_GET["CarName"]) && !empty($_GET["description"]) && !empty($_GET["timeStampLastServiced"]) && !empty($_GET["keyID"]) && !empty($_GET["password"]))
 	{
