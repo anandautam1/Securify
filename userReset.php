@@ -3,16 +3,7 @@
 include 'DatabaseConfig.php'; 
 
 if(!empty($_GET["email"]) && !empty($_GET["password"]))
-	{
-<<<<<<< HEAD:reset.php
-		$con = mysqli_connect("127.0.0.1","securify_admin","Bj37au9595","securify");
-
-    	if (mysqli_connect_errno($con)) {
-     		die("Failed to connect to MySQL: " . mysqli_connect_error());
-    	}
-=======
->>>>>>> de425bd797a3d2b3ea1981bd353461868052cbe1:userReset.php
-   
+	{  
 		$email = $_GET["email"];
 		
 		$password = $_GET["password"];
@@ -21,7 +12,7 @@ if(!empty($_GET["email"]) && !empty($_GET["password"]))
 		$password = sha1($password.$psalt);
 		
 	   // use with prepare statement after this 
-	   $query = "UPDATE users SET pass_hashed = '$password', pass_salt = '$psalt' WHERE email = '$email'";
+	    $query = "UPDATE users SET pass_hashed = '$password', pass_salt = '$psalt' WHERE email = '$email'";
 	   //echo $query;	   
 	   $inserted = mysqli_query($con, $query);
 

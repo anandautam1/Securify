@@ -14,8 +14,7 @@ if(!empty($_GET["email"]) && empty($_GET["password"]))
 		$email = $_GET["email"];
 		//echo $email; 
 		// check if username exist first 
-    	$query = sprintf("SELECT `pass_salt` FROM `users`  WHERE email='%s'",
-              mysql_real_escape_string($email));
+    	$query = "SELECT `pass_salt` FROM `users`  WHERE email='$email'";
     
     	$result = $con->query($query);
 		if(!$result){
@@ -59,8 +58,7 @@ else if(!empty($_GET["email"]) && !empty($_GET["password"]))
 		$email = $_GET["email"];
 		$password = $_GET["password"];
 		// check if username exist first 
-    	$query = sprintf("SELECT `email` , `pass_hashed` FROM `users`  WHERE email='%s' and pass_hashed='%s'",
-              mysql_real_escape_string($email), mysql_real_escape_string($password));
+    	$query = "SELECT `email` , `pass_hashed` FROM `users`  WHERE email=$email and pass_hashed='$password'";
     
     	$result = $con->query($query);
 		if(!$result){
