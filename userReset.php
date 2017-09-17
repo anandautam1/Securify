@@ -3,16 +3,16 @@
 include 'DatabaseConfig.php'; 
 
 if(!empty($_GET["email"]) && !empty($_GET["password"]))
-	{
-   
+	{  
 		$email = $_GET["email"];
 		
 		$password = $_GET["password"];
 		
 		$psalt = random_password(7);
 		$password = sha1($password.$psalt);
-
-	   $query = "UPDATE users SET pass_hashed = '$password', pass_salt = '$psalt' WHERE email = '$email'";
+		
+	   // use with prepare statement after this 
+	    $query = "UPDATE users SET pass_hashed = '$password', pass_salt = '$psalt' WHERE email = '$email'";
 	   //echo $query;	   
 	   $inserted = mysqli_query($con, $query);
 
